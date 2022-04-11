@@ -8,10 +8,10 @@ fi
 
 cd /tmp && git clone https://aur.archlinux.org/yay.git
 cd /tmp/yay && makepkg -si
-yay -S yay
+yay -Sy yay
 sudo pacman -Syu
 sudo pacman -Sy xorg xorg-xini bspwm sxhkd rofi nitrogen picom arandr neofetch firefox-developer-edition mplayer base-devel clang jdk8-openjdk python-pip pulseaudio powerline qalculate-gtk ranger kleopatra kolourpaint gimp btop libreoffice-still mlocate rxvt-unicode rxvt-unicode-terminfo urxvt-perls teamspeak3 discord xsel
-yay -S cava cbonsai downgrade fim openvpn3 polybar powerline-shell sublime-text-4 timeshift tty-clock nerd-fonts-source-code-pro
+yay -Sy cava cbonsai downgrade fim openvpn3 polybar powerline-shell sublime-text-4 timeshift tty-clock nerd-fonts-source-code-pro
 sudo updatecd
 
 home="/home/$user"
