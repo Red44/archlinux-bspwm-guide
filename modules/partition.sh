@@ -22,7 +22,7 @@ mkfs.ext4 "/dev/$system_disk"
 mkfs.fat -F32 "/dev/$efi_disk"
 
 # Mount to work with it
-mount "/dev/$home_system_disk /mnt"
+mount "/dev/$system_disk" "/mnt"
 
 # Save collected data for futher use
 mkdir /mnt/install
