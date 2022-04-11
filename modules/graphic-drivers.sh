@@ -12,7 +12,7 @@ if [ $vendor == "1" ]; then
 elif [ $vendor == "2" ]; then
   pacman -Sy xf86-video-amdgpu
 elif [ $vendor == "3" ]; then
-  pacman xf86-video-intel
+  pacman -Sy xf86-video-intel
 elif [ $vendor == "4" ]; then
   pacman -Sy xf86-video-qxl
 else
