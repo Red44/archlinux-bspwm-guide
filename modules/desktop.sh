@@ -6,7 +6,7 @@ if [ user == "root" ]; then
   exit
 fi
 
-cd /tmp && git clone https://aur.archlinux.org/yay.git
+cd /tmp && sudo git clone https://aur.archlinux.org/yay.git
 cd /tmp/yay && makepkg -si
 yay -Sy yay
 sudo pacman -Syu
