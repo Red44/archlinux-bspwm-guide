@@ -4,30 +4,35 @@ function ask_for_name() {
   echo "Enter your $1 partition"
   read partition_name
 }
-
-echo "Format the disk by yourself with fdisk create an EFI, System and Home partition. I recommend to use 550M for EFI"
-lsblk
-echo "Enter your disk you want to partition and create "
+# create system parition
+echo "Enter your disk you want to partition and create a system partition"
 read -r operating_disk
 fdisk "/dev/$operating_disk"
 
-# Ask for partitions
-ask_for_name "System"
+# format system parition
+ask_for_name "system"
 system_disk=$partition_name
-ask_for_name "EFI"
-efi_disk=$partition_name
-
-# Format partitions
 mkfs.ext4 "/dev/$system_disk"
-mkfs.fat -F32 "/dev/$efi_disk"
 
-# Mount to work with it
+# mount & dir for further configurations
 mount "/dev/$system_disk" "/mnt"
-
-# Save collected data for futher use
 mkdir /mnt/install
-touch /mnt/install/efi
 
-echo "$efi_disk" > /mnt/install/efi
-
+read -p "EFI or bootloader/grub? 1(EFI) 2(bootloader)" boot
+if [ $boot == "1" ]; then
+  # wait so that the user must read the message and configure the EFI paritionw
+  read -p "I recommend to use 550M for EFI partition (press enter to continue)" ignore
+  fdisk "/dev/$operating_disk"
+  # format EFI
+  ask_for_name "EFI"
+  efi_disk=$partition_name
+  mkfs.fat -F32 "/dev/$efi_disk"
+  # save parition name for further configuration
+  touch "/mnt/install/efi"
+  echo "$efi_disk" > "/mnt/install/efi"
+  elif [ $boot == "2" ]; then 
+  # save parition name for further configuration
+   touch "/mnt/install/bootloader"
+   echo "$system_disk" > "/mnt/install/bootloader"
+fi
 echo "Partitioning done!"
