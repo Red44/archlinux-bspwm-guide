@@ -1,13 +1,13 @@
 #!/bin/bash
 echo "This script must be executed by a user not root otherwise it is going to fail!"
 user=$(whoami)
-if [ user == "root" ]; then
+if [ $user == "root" ]; then
   echo "Root user is not allowed as well as sudo"
   exit
 fi
-
-cd /tmp && sudo git clone https://aur.archlinux.org/yay.git
-cd /tmp/yay && makepkg -si
+cd /opt && sudo git clone https://aur.archlinux.org/packages/yay
+sudo chown -R $user:$user/opt/yay 
+cd /opt && makepkg -si
 yay -Sy yay
 sudo pacman -Syu
 sudo pacman -Sy xorg xorg-xini bspwm sxhkd rofi nitrogen picom arandr neofetch firefox-developer-edition mplayer base-devel clang jdk8-openjdk python-pip pulseaudio powerline qalculate-gtk ranger kleopatra kolourpaint gimp btop libreoffice-still mlocate rxvt-unicode rxvt-unicode-terminfo urxvt-perls teamspeak3 discord xsel
