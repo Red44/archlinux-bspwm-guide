@@ -10,8 +10,8 @@ fi
 useradd -m $username
 echo "Set password for your user $username"
 passwd $username
-usermod -aG sudo,audio,video,optical,storage $username
-echo "Enable sudo group"
-wait 5
+read -p "Enable sudo group (enter to continue)" ignore
 visudo
+usermod -aG sudo,audio,video,optical,storage $username
+
 
