@@ -18,7 +18,7 @@ mkfs.ext4 "/dev/$system_disk"
 mount "/dev/$system_disk" "/mnt"
 mkdir /mnt/install
 
-read -p "EFI or bootloader/grub? 1(EFI) 2(bootloader)" boot
+read -p "EFI or bootloader/grub? 1(EFI) 2(bootloader) : " boot
 if [ $boot == "1" ]; then
   # wait so that the user must read the message and configure the EFI paritionw
   read -p "I recommend to use 550M for EFI partition (press enter to continue)" ignore
