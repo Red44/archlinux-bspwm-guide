@@ -7,7 +7,7 @@ if [ $user == "root" ]; then
 fi
 cd /opt && sudo git clone https://aur.archlinux.org/packages/yay
 sudo chown -R $user:$user /opt/yay 
-cd /opt && makepkg -si
+cd /opt/yay && makepkg -si
 yay -Sy yay
 sudo pacman -Syu
 sudo pacman -Sy xorg xorg-xini bspwm sxhkd rofi nitrogen picom arandr neofetch firefox-developer-edition mplayer base-devel clang jdk8-openjdk python-pip pulseaudio powerline qalculate-gtk ranger kleopatra kolourpaint gimp btop libreoffice-still mlocate rxvt-unicode rxvt-unicode-terminfo urxvt-perls teamspeak3 discord xsel
