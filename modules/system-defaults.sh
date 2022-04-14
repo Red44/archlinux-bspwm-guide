@@ -20,6 +20,4 @@ check_file "/usr/share/zoneinfo/$region/" $city
 ln -sf "/usr/share/zoneinfo/$region/" $city /etc/localtime
 hwclock --systohc
 nvim /etc/locale.gen
-
-
-
+locale-gen
