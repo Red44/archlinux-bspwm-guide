@@ -6,7 +6,7 @@ if [ $user == "root" ]; then
   exit
 fi
 cd /opt && sudo git clone https://aur.archlinux.org/packages/yay
-sudo chown -R $user:$user/opt/yay 
+sudo chown -R $user:$user /opt/yay 
 cd /opt && makepkg -si
 yay -Sy yay
 sudo pacman -Syu
