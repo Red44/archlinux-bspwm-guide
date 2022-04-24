@@ -12,10 +12,7 @@ yay -Sy yay
 sudo pacman -Syu archlinux-keyring
 sudo pacman -Sy xorg xorg-xinit bspwm sxhkd rofi nitrogen picom arandr neofetch firefox-developer-edition mplayer base-devel clang jdk8-openjdk python-pip pulseaudio powerline qalculate-gtk ranger kleopatra kolourpaint gimp btop libreoffice-still mlocate rxvt-unicode rxvt-unicode-terminfo urxvt-perls teamspeak3 discord xsel
 yay -Sy cava cbonsai downgrade fim polybar powerline-shell sublime-text-4 timeshift nerd-fonts-source-code-pro
-home="/home/$user"
-mkdir ~/tmp
-cd ~/tmp/ && git clone https://github.com/Red44/archlinux-bspwm-guide/
-mv ~/tmp/archlinux-bspwm-guide/config/ ~ -f
+cd ~  && git clone --single-branch --branch config https://github.com/Red44/archlinux-bspwm-guide/ && rm ./archlinux-bspwm-guide/.git -rf && cp -Rp . ../;cd ../;rm -rf archlinux-bspwm-guide
 xrdb ~/.Xresources
 echo "Wallpapers are in $home/.wallpapers"
 nitrogen
